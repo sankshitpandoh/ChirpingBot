@@ -1,21 +1,41 @@
-const Twit = require('twit');
-const T = new Twit({
-    consumer_key: process.env.APPLICATION_PDPquJbBKZ36pGln7qRAxwZwD,
-    consumer_secret: process.env.APPLICATION_8bouUiQtrZ4EybKaVqEBFGwUy9pU636rCfrdgYfFj1QScCMg3i,
-    access_token: process.env.1256615028221861891-Fl9uXpqEEGjvTuHwwzBzbZ5yruCJ2y,
-    access_token_secret: process.env.tiHuxrySqxqIgxM6Oq8SO2Isfebg2awmkKB4YoTHFLGTe
-});
-const stream = T.stream('statuses/filter', {track: '#100DaysOfCode'});
+let twit = require('twit');
+let config = {
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token: process.env.ACCESS_TOKEN,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET
+}
 
-// use this to log errors from requests
-function responseCallback (err, data, response) {
-    console.log(err);
-   }
-   
-   // event handler
-   stream.on('tweet', tweet => {
-      // retweet
-     T.post('statuses/retweet/:id', {id: tweet.id_str}, responseCallback);
-     // like
-     T.post('favorites/create', {id: tweet.id_str}, responseCallback);
-   });
+let Twitter = new twit(config);
+let retweet = function() {
+    let params = {
+      q: '#100DaysOfCode , #Node',
+      result_type: 'recent',
+      lang: 'en'    
+    } 
+    Twitter.get('search/tweets', params, function(err, data) {
+
+          if (!err) {
+            // Get's id of tweet to retweet
+              var retweetId = data.statuses[0].id_str;
+              // Retweeting happens here
+              Twitter.post('statuses/retweet/:id', {
+                  id: retweetId
+              }, function(err, response) {
+                  if (response) {
+                      console.log('Retweeted!!!');
+                  }
+                  //If Error while tweeting
+                  if (err) {
+                      console.log('Something went wrong while RETWEETING... Duplication maybe...');
+                  }
+              });
+          }
+          // if unable to Search a tweet
+          else {
+            console.log('Something went wrong while SEARCHING...');
+          }
+      });
+  }
+  retweet()
+  setInterval(retweet, 300000);
