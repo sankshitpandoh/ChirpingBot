@@ -1,0 +1,22 @@
+{
+  "name": "twitterbot",
+  "version": "1.0.0",
+  "description": "A twitter bot which retweets tweets on twitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sankshitpandoh/ChirpingBot.git"
+  },
+  "author": "Sankshit Pandoh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sankshitpandoh/ChirpingBot/issues"
+  },
+  "homepage": "https://github.com/sankshitpandoh/ChirpingBot#readme",
+  "dependencies": {
+    "twit": "^2.2.11"
+  }
+}
