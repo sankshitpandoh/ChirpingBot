@@ -7,7 +7,7 @@ let config = {
 }
 
 let Twitter = new twit(config);
-let retweet = function() {
+function retweet() {
     let params = {
       q: '#100DaysOfCode',
       result_type: 'recent',
