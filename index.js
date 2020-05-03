@@ -1,17 +1,6 @@
 let http = require('http');
 const port = process.env.PORT || 3000;
-// require('heroku-self-ping').default("https://chirping-bot.herokuapp.com/");
 http.createServer(function (req, res) {
-    // function start(counter){
-    //     if(counter < 10){
-    //       setTimeout(function(){
-    //         counter++;
-    //         retweet()
-    //         start(counter);
-    //       }, 1000);
-    //     }
-    //   }
-    //   start(0);
     retweet()
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('I am a bot, why are you here?');
