@@ -38,4 +38,4 @@ let retweet = function() {
       });
   }
   retweet()
-  setInterval(retweet, 300000);
+  setInterval(retweet, 60000);
