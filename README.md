@@ -36,8 +36,14 @@ with
 ```
     let config = require('./config')
 ```
-- Run npm install <br />
-- Run Node index.js
+- To install all dependecies , Run  
+```
+npm install
+``` 
+- To start, Run  
+```
+npm start
+```
 
 # Supporting Me
 Thanks for using this project!

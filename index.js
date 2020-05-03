@@ -9,7 +9,7 @@ let config = {
 let Twitter = new twit(config);
 let retweet = function() {
     let params = {
-      q: '#100DaysOfCode , #Node',
+      q: '#100DaysOfCode',
       result_type: 'recent',
       lang: 'en'    
     } 
