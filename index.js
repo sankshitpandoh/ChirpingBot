@@ -13,6 +13,8 @@ http.createServer(function (req, res) {
     //   }
     //   start(0);
     retweet()
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('I am a bot, why are you here?');
 }).listen(port);
 
 let twit = require('twit');
