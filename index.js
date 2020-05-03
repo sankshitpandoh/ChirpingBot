@@ -1,4 +1,16 @@
+let http = require('http');
+const port = process.env.PORT || 3000;
+require('heroku-self-ping').default("https://chirping-bot.herokuapp.com/");
+http.createServer(function (req, res) {
+    for(let i = 0; i <=20; i++){
+        setTimeout(function(){
+            retweet()
+        }, 60000)
+    }
+}).listen(port);
+
 let twit = require('twit');
+// let config = require('./config')
 let config = {
     consumer_key: process.env.CONSUMER_KEY,
     consumer_secret: process.env.CONSUMER_SECRET,
@@ -37,5 +49,3 @@ let retweet = function() {
           }
       });
   }
-  retweet()
-  setInterval(retweet, 60000);

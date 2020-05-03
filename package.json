@@ -4,7 +4,7 @@
   "description": "A twitter bot which retweets tweets on twitter",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js" ,
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/sankshitpandoh/ChirpingBot#readme",
   "dependencies": {
+    "heroku-self-ping": "^2.0.1",
     "twit": "^2.2.11"
   }
 }
