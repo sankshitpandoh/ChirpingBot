@@ -142,7 +142,7 @@ let like = function(){
           // Get's id of tweet to retweet
             var favId = data.statuses[0].id_str;
             // Retweeting happens here
-            Twitter.post('statuses/retweet/:id', {
+            Twitter.post('favorites/create/:id', {
                 id: favId
             }, function(err, response) {
                 if (response) {
