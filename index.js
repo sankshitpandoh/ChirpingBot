@@ -7,7 +7,8 @@ http.createServer(function (req, res) {
 }).listen(port);
 
 let twit = require('twit');
-// let config = require('./config')
+
+// Getting keys from env values
 let config = {
     consumer_key: process.env.CONSUMER_KEY,
     consumer_secret: process.env.CONSUMER_SECRET,
@@ -17,11 +18,52 @@ let config = {
 
 let Twitter = new twit(config);
 let retweet = function() {
-    let params = {
-      q: '#100DaysOfCode',
-      result_type: 'recent',
-      lang: 'en'    
-    } 
+    let i 
+    let parms
+    i = Math.floor(Math.random() * 5) + 1
+    if(i == 0){
+        params = {
+            q: '#fullstack',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    else if(i == 1){
+        params = {
+        q: '#100DaysOfCode',
+        result_type: 'recent',
+        lang: 'en'    
+        } 
+    }
+    else if(i == 2){
+        params = {
+            q: '#javascript',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    else if(i == 3){
+        params = {
+            q: '#programming',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    else if(i == 4){
+        params = {
+            q: '#coding',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    else {
+        params = {
+            q: '#webdevelopment',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+
     Twitter.get('search/tweets', params, function(err, data) {
 
           if (!err) {
