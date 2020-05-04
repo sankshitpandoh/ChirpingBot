@@ -74,17 +74,17 @@ let retweet = function() {
                   id: retweetId
               }, function(err, response) {
                   if (response) {
-                      console.log('Retweeted!!!' + parms.q);
+                      console.log('Retweeted!!!' + params.q);
                   }
                   //If Error while tweeting
                   if (err) {
-                      console.log('Something went wrong while RETWEETING...'+ parms.q +' Duplication maybe...');
+                      console.log('Something went wrong while RETWEETING...'+ params.q +' Duplication maybe...');
                   }
               });
           }
           // if unable to Search a tweet
           else {
-            console.log('Something went wrong while SEARCHING...' + parms.q);
+            console.log('Something went wrong while SEARCHING...' + params.q);
           }
       });
   }
