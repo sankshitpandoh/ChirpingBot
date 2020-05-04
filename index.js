@@ -139,10 +139,10 @@ let like = function(){
     Twitter.get('search/tweets', params, function(err, data) {
 
         if (!err) {
-          // Get's id of tweet to retweet
-            var favId = data.statuses[0].id_str;
-            // Retweeting happens here
-            Twitter.post('favorites/create/:id', {
+          // Get's id of tweet to like
+            let favId = data.statuses[0].id_str;
+            // Liking happens here
+            Twitter.post('favorites/create', {
                 id: favId
             }, function(err, response) {
                 if (response) {
