@@ -3,7 +3,7 @@ const port = process.env.PORT || 3000;
 http.createServer(function (req, res) {
     retweet()
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('I am a bot, why are you here?');
+    res.end('Hello I am Pandoh Bot, you should not be here. Are you lost? <a href="https://twitter.com/BotPandoh">Click here</a> to see me working live ');
 }).listen(port);
 
 let twit = require('twit');
@@ -146,9 +146,9 @@ let like = function(){
                 id: favId
             }, function(err, response) {
                 if (response) {
-                    console.log('Liked!' + params.q);
+                    console.log('Liked tweet from tag' + params.q);
                 }
-                //If Error while tweeting
+                //If Error while liking
                 if (err) {
                     console.log('Something went wrong while Liking...'+ params.q +' Already Liked maybe...');
                 }
