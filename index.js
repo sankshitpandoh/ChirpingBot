@@ -74,7 +74,7 @@ let retweet = function() {
                   id: retweetId
               }, function(err, response) {
                   if (response) {
-                      console.log('Retweeted!!!');
+                      console.log('Retweeted!!!' + parms.q);
                   }
                   //If Error while tweeting
                   if (err) {
