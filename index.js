@@ -2,7 +2,7 @@ let http = require('http');
 const port = process.env.PORT || 3000;
 http.createServer(function (req, res) {
     retweet()
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.writeHead(200, {'Content-Type': 'text/html'});
     res.end('Hello I am Pandoh Bot, you should not be here. Are you lost? <a href="https://twitter.com/BotPandoh">Click here</a> to see me working live ');
 }).listen(port);
 
