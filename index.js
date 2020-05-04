@@ -75,6 +75,7 @@ let retweet = function() {
               }, function(err, response) {
                   if (response) {
                       console.log('Retweeted!!!' + params.q);
+                      like()
                   }
                   //If Error while tweeting
                   if (err) {
@@ -88,3 +89,74 @@ let retweet = function() {
           }
       });
   }
+
+let like = function(){
+    let i 
+    let parms
+    i = Math.floor(Math.random() * 5) + 1
+    if(i == 0){
+        params = {
+            q: '#fullstack',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    else if(i == 1){
+        params = {
+        q: '#100DaysOfCode',
+        result_type: 'recent',
+        lang: 'en'    
+        } 
+    }
+    else if(i == 2){
+        params = {
+            q: '#javascript',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    else if(i == 3){
+        params = {
+            q: '#programming',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    else if(i == 4){
+        params = {
+            q: '#coding',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    else {
+        params = {
+            q: '#webdevelopment',
+            result_type: 'recent',
+            lang: 'en'    
+        } 
+    }
+    Twitter.get('search/tweets', params, function(err, data) {
+
+        if (!err) {
+          // Get's id of tweet to retweet
+            var favId = data.statuses[0].id_str;
+            // Retweeting happens here
+            Twitter.post('statuses/retweet/:id', {
+                id: favId
+            }, function(err, response) {
+                if (response) {
+                    console.log('Liked!' + params.q);
+                }
+                //If Error while tweeting
+                if (err) {
+                    console.log('Something went wrong while Liking...'+ params.q +' Already Liked maybe...');
+                }
+            });
+        }
+        // if unable to Search a tweet
+        else {
+          console.log('Something went wrong while SEARCHING...' + params.q);
+        }
+    });
+}
