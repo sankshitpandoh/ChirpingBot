@@ -78,13 +78,13 @@ let retweet = function() {
                   }
                   //If Error while tweeting
                   if (err) {
-                      console.log('Something went wrong while RETWEETING... Duplication maybe...');
+                      console.log('Something went wrong while RETWEETING...'+ parms.q +' Duplication maybe...');
                   }
               });
           }
           // if unable to Search a tweet
           else {
-            console.log('Something went wrong while SEARCHING...');
+            console.log('Something went wrong while SEARCHING...' + parms.q);
           }
       });
   }
