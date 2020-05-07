@@ -1,9 +1,10 @@
 let http = require('http');
 const port = process.env.PORT || 3000;
 http.createServer(function (req, res) {
-    retweet()
+    // retweet()
+    tweetEvent()
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Hello I am Pandoh Bot, you should not be here. Are you lost? <a href="https://twitter.com/BotPandoh">Click here</a> to see me working live ');
+    res.end('Hello I am Bot Pandoh, you should not be here. Are you lost? <a href="https://twitter.com/BotPandoh">Click here</a> to see me working live ');
 }).listen(port);
 
 let twit = require('twit');
@@ -17,6 +18,39 @@ let config = {
 }
 
 let Twitter = new twit(config);
+let stream = Twitter.stream('user');
+stream.on('tweet', tweetEvent);
+
+function tweetEvent(tweet){
+    let reply_to = tweet.in_reply_to_screen_name;
+    let name = tweet.user.screen_name;
+    let txt = tweet.text;
+    if (reply_to === 'BotPandoh') {
+
+        // Get rid of the @ mention
+        txt = txt.replace(/@BotPandoh/g,'');
+    
+        // Start a reply back to the sender
+        var reply = '.@'+name + ' ';
+        // Reverse their text
+        for (var i = txt.length-1; i >= 0; i--) {
+          reply += txt.charAt(i);
+        }
+      
+        // Post that tweet!
+        T.post('statuses/update', { status: reply }, tweeted);
+    
+        // Make sure it worked!
+        function tweeted(err, reply) {
+          if (err !== undefined) {
+            console.log(err);
+          } else {
+            console.log('Tweeted: ' + reply);
+          }
+        };
+      }
+}
+
 let retweet = function() {
     let i 
     let parms
