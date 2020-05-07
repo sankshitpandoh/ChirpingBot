@@ -21,23 +21,22 @@ let config = {
 
 let Twitter = new twit(config);
 let lastId
-
-//Getting joke
-var request = require('request');
-
-let options = {
-    url: 'https://official-joke-api.appspot.com/jokes/programming/random',
-    method: 'GET'
-}
 let joke
-request(options, (err, response, body) => {
-    if(!err && response.statusCode == 200)
-     joke = JSON.parse(body)
-     joke =  joke[0].setup + " " +joke[0].punchline
-    console.log(joke)
-});
 
 function reply(){
+    //Getting joke
+    let request = require('request');
+
+    let options = {
+        url: 'https://official-joke-api.appspot.com/jokes/programming/random',
+        method: 'GET'
+    }
+    request(options, (err, response, body) => {
+        if(!err && response.statusCode == 200)
+            joke = JSON.parse(body)
+            joke =  joke[0].setup + " " +joke[0].punchline
+            console.log(joke)
+        });
     let params = {
         q: '@BotPandoh',
         result_type: 'recent',
