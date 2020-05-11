@@ -1,3 +1,4 @@
+[![Heroku](http://heroku-badges.herokuapp.com/?app=heroku-badges&root=products-e2e.html)](https://chirping-bot.herokuapp.com/)
 # A Twitter Retweeting bot
 A simple twitter bot written in Node which retweets on the basis of hashtags as a query and continues to do so after a certain period of time interval.
 
