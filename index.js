@@ -8,7 +8,7 @@ http.createServer(function (req, res) {
     retweet();
     like();
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Hello I am Bot Pandoh, you should not be here. Are you lost? <a href="https://twitter.com/BotPandoh">Click here</a> to see me working live ');
+    res.end('Hello I am Bot');
 }).listen(port);
 
 let twit = require('twit');
@@ -28,7 +28,8 @@ let config = {
 
 let Twitter = new twit(config);
 let joke;
-let tagsArray = ['#fullstack', '#100DaysOfCode', '#javascript', '#programming', '#coding', '#webdevelopment', '#NodeJS'];
+/* Tags to retweet or like are to be filled in the tags array */
+let tagsArray = [];
 
 /* This function replies to mentioned tweet */
 function reply(){
@@ -47,7 +48,7 @@ function reply(){
             console.log(joke)
     });
     let params = {
-            q: '@BotPandoh',
+            q: '', /* Here comes the your @username and eveytime itll be mentioned it will reply to it */
             result_type: 'recent',
             lang: 'en'    
     }
@@ -115,9 +116,9 @@ function reply(){
 
 /* This function retweets a random tweet from tagsArray  */
 let retweet = function() {
-    let i 
-    let parms
-    i = Math.floor(Math.random() * 6) + 1
+    let i;
+    let params;
+    i = Math.floor(Math.random() * (tagsArray.length - 1)) + 1
     params = {
         q: tagsArray[i],
         result_type: 'recent',
@@ -150,8 +151,8 @@ let retweet = function() {
 /* This function likes a random tweet from tagsArray  */
 let like = function(){
     let i; 
-    let parms;
-    i = Math.floor(Math.random() * 6) + 1;
+    let params;
+    i = Math.floor(Math.random() * (tagsArray.length - 1)) + 1;
     params = {
         q: tagsArray[i],
         result_type: 'recent',
