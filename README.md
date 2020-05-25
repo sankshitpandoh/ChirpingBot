@@ -1,4 +1,15 @@
-[![Heroku](http://heroku-badges.herokuapp.com/?app=heroku-badges&root=products-e2e.html)](https://chirping-bot.herokuapp.com/)
+# This Project is divided into three branches
+- Master Branch
+
+    Here the general code for the bot is present
+- botPandoh Branch 
+
+    [![Heroku](http://heroku-badges.herokuapp.com/?app=heroku-badges&root=products-e2e.html)](https://chirping-bot.herokuapp.com/)
+    
+    Here the code is configured for [@BotPandoh](https://twitter.com/BotPandoh)
+- MusicSmokinBot Branch
+
+    Here the code is configured for [@MusicSmokinBot](https://twitter.com/MusicSmokinBot)
 # A Twitter Retweeting bot
 A simple twitter bot written in Node which retweets on the basis of hashtags as a query and continues to do so after a certain period of time interval.
 
