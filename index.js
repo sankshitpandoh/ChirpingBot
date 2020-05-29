@@ -11,18 +11,18 @@ http.createServer(function (req, res) {
     res.end('Hello I am Music Smokin Bot, you should not be here. Are you lost? <a href="https://twitter.com/MusicSmokinBot">Click here</a> to see me working live ');
 }).listen(port);
 
-let twit = require('twit');
+// let twit = require('twit');
 
-let config = {
-  consumer_key: process.env.CONSUMER_KEY,
-  consumer_secret: process.env.CONSUMER_SECRET,
-  access_token: process.env.ACCESS_TOKEN,
-  access_token_secret: process.env.ACCESS_TOKEN_SECRET
+// let config = {
+//   consumer_key: process.env.CONSUMER_KEY,
+//   consumer_secret: process.env.CONSUMER_SECRET,
+//   access_token: process.env.ACCESS_TOKEN,
+//   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 
-}
-let Twitter = new twit(config);
+// }
+// let Twitter = new twit(config);
 
-let apiKey = '104aa872cddd1e64693510ca20f37b34';
+let apiKey = process.env.API_KEY;
 let genre = 18;
 let snippet = true;
 let language = 'en';
@@ -36,22 +36,35 @@ function initiateTweet(){
   
   // console.log(url)
   request.get(url + `&page_size=1`, function(error, response, body) {
-    body = JSON.parse(body);
-    let available = body.message.header.available;
-    // console.log(available);
-    if(available > 0){
-      var pages = Math.ceil(available / 100);
-      var page = Math.floor((Math.random() * pages) + 1);
-      request.get(url + `&page_size=100&page=${page}`, function(error, response, body) {
-        body = JSON.parse(body);
-        var tracks = body.message.body.track_list;
-        // console.log(tracks.length)
-        if(tracks.length > 0){
-          var rnd = Math.floor((Math.random() * tracks.length));
-          let trackDetail = tracks[rnd]
-          getAlldetails(trackDetail)
-        }
-      })
+    if(!error && response.statusCode == 200){
+      console.log(body)
+      body = JSON.parse(body);
+      let available = body.message.header.available;
+      // console.log(available);
+      if(available > 0){
+        var pages = Math.ceil(available / 100);
+        var page = Math.floor((Math.random() * pages) + 1);
+        request.get(url + `&page_size=100&page=${page}`, function(error, response, body) {
+          if(!error && response.statusCode == 200){
+            body = JSON.parse(body);
+            var tracks = body.message.body.track_list;
+            // console.log(tracks.length)
+            if(tracks.length > 0){
+              var rnd = Math.floor((Math.random() * tracks.length));
+              let trackDetail = tracks[rnd]
+              getAlldetails(trackDetail)
+            }
+          }
+          else{
+            console.log(error)
+          }
+
+        })
+
+      }
+    }
+    else{
+      console.log("Some error in request maybe")
     }
   
   })
@@ -73,7 +86,7 @@ function getAlldetails(x){
       album : x.track.album_name
     }
     console.log(details)
-    goTweet(details)
+    // goTweet(details)
   })
 }
 
