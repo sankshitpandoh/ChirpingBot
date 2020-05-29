@@ -19,6 +19,7 @@
   "homepage": "https://github.com/sankshitpandoh/ChirpingBot#readme",
   "dependencies": {
     "heroku-self-ping": "^2.0.1",
+    "spotify-web-api-node": "^4.0.0",
     "twit": "^2.2.11"
   }
 }
