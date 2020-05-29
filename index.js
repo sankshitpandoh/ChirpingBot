@@ -78,13 +78,13 @@ function getAlldetails(x){
 }
 
 function goTweet(details){
-  Twitter.post('statuses/update', { status:`"${details.lyricSnippet} ." Track Name : ${details.track} , Album : ${details.album} , Artist : ${details.artist} `}, function(err, response) {
+  Twitter.post('statuses/update', { status:`"${details.lyricSnippet} ."  \n Track Name : ${details.track} , Album : ${details.album} , Artist : ${details.artist} `}, function(err, response) {
     if (response) {
         console.log("Tweeted!" + " " + details);
     }
     /* If Error while tweeting */
     if (err) {
-        console.log('Something went wrong while Replying...'+ params.q);
+        console.log('Something went wrong while Tweeting...');
     }
 });
 }
