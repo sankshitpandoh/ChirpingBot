@@ -8,7 +8,7 @@ const port = process.env.PORT || 5000;
 http.createServer(function (req, res) {
     initiateTweet()
     res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('Hello I am Bot Pandoh, you should not be here. Are you lost? <a href="https://twitter.com/BotPandoh">Click here</a> to see me working live ');
+    res.end('Hello I am Music Smokin Bot, you should not be here. Are you lost? <a href="https://twitter.com/MusicSmokinBot">Click here</a> to see me working live ');
 }).listen(port);
 
 let twit = require('twit');
