@@ -7,7 +7,10 @@
     [![Heroku](http://heroku-badges.herokuapp.com/?app=heroku-badges&root=products-e2e.html)](https://chirping-bot.herokuapp.com/)
     
     Here the code is configured for [@BotPandoh](https://twitter.com/BotPandoh)
+    
 - MusicSmokinBot Branch
+
+    [![Heroku](http://heroku-badges.herokuapp.com/?app=heroku-badges&root=products-e2e.html)](https://smokin-loud-music.herokuapp.com/)
 
     Here the code is configured for [@MusicSmokinBot](https://twitter.com/MusicSmokinBot)
 # A Twitter Retweeting bot
