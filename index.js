@@ -20,6 +20,7 @@ let config = {
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 
 }
+let Twitter = new twit(config);
 
 let apiKey = '104aa872cddd1e64693510ca20f37b34';
 let genre = 18;
