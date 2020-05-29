@@ -78,7 +78,7 @@ function getAlldetails(x){
 }
 
 function goTweet(details){
-  Twitter.post('statuses/update', { status:"This is a test tweet"}, function(err, response) {
+  Twitter.post('statuses/update', { status:`"${details.lyricSnippet} ." Track Name : ${details.track} , Album : ${details.album} , Artist : ${details.artist} `}, function(err, response) {
     if (response) {
         console.log("Tweeted!" + " " + details);
     }
