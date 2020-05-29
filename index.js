@@ -78,7 +78,7 @@ function getAlldetails(x){
 }
 
 function goTweet(details){
-  Twitter.post('statuses/update', { status:`"${details.lyricSnippet} ."  \n Track Name : ${details.track} , Album : ${details.album} , Artist : ${details.artist} `}, function(err, response) {
+  Twitter.post('statuses/update', { status:`"${details.lyricSnippet} ."  \n Track Name : ${details.track} , \n Album : ${details.album} , \n Artist : ${details.artist} `}, function(err, response) {
     if (response) {
         console.log("Tweeted!" + " " + details);
     }
