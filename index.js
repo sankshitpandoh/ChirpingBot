@@ -11,16 +11,16 @@ http.createServer(function (req, res) {
     res.end('Hello I am Music Smokin Bot, you should not be here. Are you lost? <a href="https://twitter.com/MusicSmokinBot">Click here</a> to see me working live ');
 }).listen(port);
 
-// let twit = require('twit');
+let twit = require('twit');
 
-// let config = {
-//   consumer_key: process.env.CONSUMER_KEY,
-//   consumer_secret: process.env.CONSUMER_SECRET,
-//   access_token: process.env.ACCESS_TOKEN,
-//   access_token_secret: process.env.ACCESS_TOKEN_SECRET
+let config = {
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
 
-// }
-// let Twitter = new twit(config);
+}
+let Twitter = new twit(config);
 
 let apiKey = process.env.API_KEY;
 let genre = 18;
@@ -86,7 +86,7 @@ function getAlldetails(x){
       album : x.track.album_name
     }
     console.log(details)
-    // goTweet(details)
+    goTweet(details)
   })
 }
 
