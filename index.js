@@ -42,13 +42,15 @@ function reply(){
         method: 'GET'
     }
     request(options, (err, response, body) => {
-        if(!err && response.statusCode == 200)
+        if(!err && response.statusCode == 200) {
             joke = JSON.parse(body)
-            joke =  joke[0].setup + " " +joke[0].punchline
+            joke =  `${joke[0].setup} ${joke[0].punchline}`
             console.log(joke)
+        }
     });
     let params = {
-            q: '', /* Here comes the your @username and eveytime itll be mentioned it will reply to it */
+            /* Here comes the your @username and eveytime itll be mentioned it will reply to it */
+            q: '', 
             result_type: 'recent',
             lang: 'en'    
     }
@@ -63,8 +65,8 @@ function reply(){
             /* Checking if already replied to tweet or not */
             fs.readFile('./repliedId.json', function (err, OldData) {
                 let dataArray = JSON.parse(OldData);
-                for(let i = 0; i < dataArray.length; i++){
-                    if(tweetId === dataArray[i].tweetId){
+                for(const element of dataArray){
+                    if(tweetId === element.tweetId){
                         check = 1;
                         break;
                     }
